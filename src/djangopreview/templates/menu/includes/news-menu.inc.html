@@ -1,0 +1,55 @@
+{% load i18n %}
+<li class="nav-item dropdown">
+    <span class="nav-link" data-widget="collapse">
+        {% trans "News" %}
+    </span>
+    <ul class="nav-list nav-vertical menu hidden" data-widget="menu">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'create_news' id_channel=working_channel.id lang=LANGUAGE_CODE %}">
+                {% trans "Create a news" %}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'manage_channel' id_channel=working_channel.id lang=LANGUAGE_CODE %}">
+                {% trans "Edit my news" %}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'search' channel_name=working_channel.name %}?preview=True" target="_blank">
+                {% trans "View my news" %}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="http://actu.epfl.ch/feeds/rss/{{working_channel.name}}/{{ LANGUAGE_CODE }}/" target="_blank">
+                {% trans "View RSS" %}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'post_webservice' id_channel=working_channel.id %}">
+                {% trans "Export my news to a web site" %}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'homepage' %}">
+                {% trans "Import news" %}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'manage_trash' id_channel=working_channel.id lang=LANGUAGE_CODE %}">
+                {% trans "View the trash" %}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'reorder_channel' id_channel=working_channel.id lang=LANGUAGE_CODE %}">
+                {% trans "Change the publish order of my news" %}
+            </a>
+        </li>
+        {% if request.user.get_profile.has_many_channels %}	
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'change_working_channel' %}">
+                {% trans "Change working channel" %}
+            </a>
+        </li>
+        {% endif %}
+    </ul>
+</li>

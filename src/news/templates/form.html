@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load staticfiles %}
+
+{% block content %}
+
+<!-- The page header -->
+ <header class="page-header">
+   <h1 class="page-title">{% trans "Create news" %}</h1>
+ </header>
+
+ <!-- The page content -->
+ <div class="page-content">
+
+		<form action="" method="post">{% csrf_token %}
+		
+			<div class="field"> 
+				{{ form.title.label_tag }} 
+				<div>{{ form.title}}</div>
+				<ul>
+				{% for error in form.title.errors %}
+        			<li><strong>{{ error|escape }}</strong></li>
+    			{% endfor %}
+				</ul>
+			</div>
+
+			<div class="field"> 
+				{{ form.text.label_tag }} 
+				<div>{{ form.text}}</div>
+				<ul>
+				{% for error in form.text.errors %}
+        			<li><strong>{{ error|escape }}</strong></li>
+    			{% endfor %}
+				</ul>
+			</div>
+			<input type="submit" name="save" value="{% trans "Save" %}">
+		
+		</form>   
+ </div>
+
+ <!-- The page footer -->
+ <footer class="page-footer">
+   
+ </footer>
+
+
+
+{% endblock %}

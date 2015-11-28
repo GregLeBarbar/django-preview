@@ -1,0 +1,30 @@
+{% load i18n %}
+<form style="display:none" id="change_lang_form" action="/i18n/setlang/" method="post">
+    <input id="selected_lang" type="hidden" name="language" value="{{ LANGUAGE_CODE }}"/>
+	{% csrf_token %}
+</form>  
+
+<!-- The language selector -->
+<nav class="nav nav-inline lang" role="navigation">
+	<ul id="languages" title="{% trans "Choice of language" %}" class="nav-list">
+		
+	{% if LANGUAGE_CODE == 'fr' %}
+	  <li class="nav-item nav-item-active current">
+        <span lang="fr"><span class="visuallyhidden-xxs visuallyhidden-xs">français</span></span>
+	  </li>
+	  <li class="nav-item">
+	    <a id="change_lang_en" class="nav-link" href="#" lang="en"><span class="visuallyhidden-xxs visuallyhidden-xs">English</span></a>
+	  </li>
+	 {% endif %}
+	 
+	 {% if LANGUAGE_CODE == 'en' %}
+	   <li class="nav-item">
+	    <a id="change_lang_fr" class="nav-link" href="#" lang="fr"><span class="visuallyhidden-xxs visuallyhidden-xs">français</span></a>
+	  </li>
+	  <li class="nav-item nav-item-active current">
+      <span lang="en"><span class="visuallyhidden-xxs visuallyhidden-xs">English</span></span>
+	  </li>
+	 {% endif %}
+	 
+	</ul>
+</nav>

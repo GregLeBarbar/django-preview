@@ -1,0 +1,35 @@
+{% load i18n %}
+<div class="mainnav">
+        <a id="main-navigation-label" class="hidden visible-xxs visible-xs" href="#main-navigation" data-widget="collapse">Navigation principale</a>
+        
+        <nav id="main-navigation" class="nav nav-block nav-horizontal themed visible-s visible-m visible-l visible-xl visible-xxl" role="navigation" aria-labelledby="main-navigation-label">
+          <ul class="nav-list" data-widget="menubar">
+            <li class="nav-item hidden-xxs hidden-xs">
+              <a class="nav-link" href="{% url 'home' %}">
+                <span class="hidden-xxs hidden-xs icon icon-inline icon-big icon-home" role="presentation" hidden="hidden"></span>
+                <span class="hidden-s hidden-m hidden-l hidden-xl hidden-xxl">Page d'accueil</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <span class="nav-link" data-widget="collapse">{% trans "News" %}</span>
+              <ul class="nav-list nav-vertical" data-widget="menu" data-items=".nav-link">
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'create_news' %}">{% trans "Create news" %}</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Admin</a>
+              <span data-widget="collapse"></span>
+              <ul class="nav-list nav-vertical" data-widget="menu" data-items=".nav-link">
+                <li class="nav-item">
+                  <a class="nav-link" href="/admin">Accéder à la zone admin</a>
+                </li>
+                <!-- ... -->
+              </ul>
+            </li>
+            <!-- ... -->
+          </ul>
+        </nav>
+
+</div>

@@ -1,0 +1,26 @@
+{% load i18n %}
+{% if user.is_staff %}
+    <li class="nav-item dropdown">
+        <span  class="nav-link" data-widget="collapse">
+            {% trans "Help" %}
+        </span>
+        <ul class="nav-list nav-vertical menu hidden" data-widget="menu">
+            <li class="nav-item">
+                <a class="nav-link" href="http://help-actu.epfl.ch/" target="_blank">
+                    {% trans "Online Help" %}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="http://wiki.epfl.ch/outil-actu/admin" target="_blank">
+                    {% trans "Online Help for administration tool" %}
+                </a>
+            </li>
+        </ul>
+    </li>
+{% else %}
+    <li class="nav-item">
+        <a class="nav-link" href="http://help-actu.epfl.ch/" target="_blank">
+            {% trans "Help" %}
+        </a>
+    </li>
+{% endif %}

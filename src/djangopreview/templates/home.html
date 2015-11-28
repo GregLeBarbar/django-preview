@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load l10n %}
+{% load staticfiles %}
+
+{% block content %}
+<!-- The page header -->
+ <header class="page-header">
+   <h1 class="page-title">Prototype Outil actus avec Django 1.8</h1>
+ </header>
+
+ <!-- The page content -->
+ <div class="page-content">
+
+   {% for n in news %}
+		<h2><a href="{% url 'news-detail' slug=n.slug%}">{{ n.title}}</a></h2>
+		<p>{{ n.text}}</p>
+		
+		<div><a href="{% url 'edit_news' news_id=n.id %}">Editer</a></div>
+   {% endfor %}
+   
+   
+   
+ </div>
+
+ <!-- The page footer -->
+ <footer class="page-footer">
+   
+ </footer>
+
+{% endblock %}
+

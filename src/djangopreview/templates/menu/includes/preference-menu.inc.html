@@ -1,0 +1,51 @@
+{% load i18n %}
+{% if user.is_staff %}
+    <li class="nav-item dropdown">
+        <span class="nav-link" data-widget="collapse">
+            Options
+        </span>
+        <ul class="nav-list nav-vertical menu hidden" data-widget="menu">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'config' %}">
+                    {% trans "Preferences" %}
+                </a>
+            </li>
+            {% for group in user.groups.all %}
+                {% if group|stringformat:"s" == "FAC" %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/facadmin/">
+                            {% trans "School admin tool" %}
+                        </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            {% if user.is_superuser %}
+                {% if translation %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'edit_news' id_channel=translation.news.channel.id id_news=translation.news.id lang=translation.language.code %}">
+                            Editer l'actualite
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'display_mail' id_translation=translation.id %}">
+                            Voir le mail
+                        </a>
+                    </li>
+                {% endif %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/">
+                        {% trans "Admin tool" %}
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </li>
+{% else %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'config' %}">
+            {% trans "Preferences" %}
+        </a>
+    </li>
+{% endif %}

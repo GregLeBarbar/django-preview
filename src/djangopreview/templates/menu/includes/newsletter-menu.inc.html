@@ -1,0 +1,35 @@
+{% load i18n %}
+<li class="nav-item dropdown">
+	<span class="nav-link" data-widget="collapse">
+        {% trans "Newsletter" %}
+    </span>
+	<ul class="nav-list nav-vertical menu hidden" data-widget="menu">
+		<li class="nav-item">
+            <a class="nav-link" href="{% url 'create_newsletter' id_channel=working_channel.id lang='fr' %}">
+                {% trans "Create a newsletter in French" %}
+            </a>
+        </li>
+    	<li class="nav-item">
+            <a class="nav-link" href="{% url 'create_newsletter' id_channel=working_channel.id lang='en' %}">
+                {% trans "Create a newsletter in English" %}
+            </a>
+        </li>
+    	{% comment %}
+    	<li class="nav-item">
+            <a class="nav-link" href="{% url 'create_newsletter' id_channel=working_channel.id lang='all' %}">
+                {% trans "Create a newsletter in French and English" %}
+            </a>
+        </li>
+    	{% endcomment %}
+    	<li class="nav-item">
+            <a class="nav-link" href="{% url 'manage_newsletter' id_channel=working_channel.id lang='fr' %}">
+                {% trans "Edit my newsletters" %}
+            </a>
+        </li>
+    	<li class="nav-item">
+            <a class="nav-link" href="{% url 'manage_contact' id_channel=working_channel.id lang='fr' %}">
+                {% trans "Edit my subscribers" %}
+            </a>
+        </li>
+	</ul>
+</li>

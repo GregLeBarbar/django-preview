@@ -1,0 +1,13 @@
+{% load i18n %}
+<li class="nav-item dropdown">
+    <span class="nav-link" data-widget="collapse">
+        {% trans "Subscription to the channel" %}
+    </span>
+    <ul class="nav-list nav-vertical menu hidden" data-widget="menu">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'manage_subscriber' id_channel=working_channel.id lang='fr' %}">
+                {% trans "Manage subscribers" %}
+            </a>
+        </li>
+    </ul>
+</li>
