@@ -20,22 +20,26 @@ class NewsFormPreview(FormPreview):
     form_template = 'form.html'
     preview_template = 'preview.html'
     
-    def process_preview(self, request, form, context):
-        print "processed"
         
     def parse_params(self, *args, **kwargs):
-        
-        news_id = kwargs['news_id']
-        self.state['news_id'] = news_id
+         
+        if 'news_id' in kwargs:
+            news_id = kwargs['news_id']
+            self.state['news_id'] = news_id
+        else:
+            pass
+
         
     def get_initial(self, request):
         """
         Takes a request argument and returns a dictionary to pass to the form's
         ``initial`` kwarg when the form is being created from an HTTP get.
         """
-        news = News.objects.get(id=self.state['news_id'])
-        
-        return {'instance': news,}
+        result = {}
+        if 'news_id' in self.state: 
+            news = News.objects.get(id=self.state['news_id'])
+            result = {'instance': news,}
+        return result 
 
 
     def done(self, request, cleaned_data):
